@@ -18,7 +18,6 @@ $.getJSON(url, function (r) {
     pl = pl + "<br>" + r.players.sample[i].name;
   }
   $("#rest").html(
-    
       motd +
       "<br><b>Players Online:</b> " +
       r.players.online +
