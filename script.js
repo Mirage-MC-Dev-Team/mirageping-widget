@@ -10,7 +10,7 @@ $.getJSON(url, function (r) {
   }
   var pl = "";
   var motd = r.description.replaceColorCodes();
-  for (i = 0; 5 > i; i++) {
+  for (i = 0; 5 >= i; i++) {
     pl = pl + "<br>" + r.players.sample[i].name;
   }
   $("#rest").html(
