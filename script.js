@@ -2,23 +2,22 @@
 // includes a script from https://github.com/FoxInFlame/MinecraftColorCodes
 var url = "https://api.minetools.eu/ping/play.miragefactions.com";
 $(document).ready(function(){
-$.getJSON(url, function (r) {
+$.getJSON(url, function (rest) {
   //data is the JSON string
-  if (r.error) {
+  if (rest.error) {
     $("#rest").html("Server Offline");
     return false;
   }
   var pl = "";
-  var motd = r.description.replaceColorCodes();
   for (i = 0; 5 >= i; i++) {
-    pl = pl + "<br>" + r.players.sample[i].name;
+    pl = pl + "<br>" + rest.players.sample[i].name;
   }
   $("#rest").html(
-      motd.textContent +
+    rest.description.replaceColorCodes().textContent +
       "<br><b>Players Online:</b> " +
-      r.players.online +
+      rest.players.online +
       pl
   );
-  $("#favicon").attr("src", r.favicon);
+  $("#favicon").attr("src", rest.favicon);
 });
 });
