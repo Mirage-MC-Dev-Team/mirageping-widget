@@ -9,11 +9,13 @@ $.getJSON(url, function (rest) {
     return false;
   }
   var pl = "";
-  for (i = 0; 5 >= i; i++) {
+  var motd = rest.description.replace(/\u00a7(.+?)/gi, "");
+  for (i = 0; 5 > i; i++) {
+    if(i >= rest.players.sample.length) break;
     pl = pl + "<br>" + rest.players.sample[i].name;
   }
   $("#rest").html(
-    rest.description.replaceColorCodes().textContent +
+    motd +
       "<br><b>Players Online:</b> " +
       rest.players.online +
       pl
