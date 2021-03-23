@@ -1,6 +1,33 @@
 <script src="https://github.com/FoxInFlame/MinecraftColorCodes/blob/master/MinecraftColorCodes.3.7.js"></script>
 <script src="https://raw.githubusercontent.com/FoxInFlame/MinecraftColorCodes/master/MinecraftColorCodes.3.7.js"></script>
-<script src="MinecraftColorCodes.js"></script>
+<script src="./MinecraftColorCodes.js">
+//based on a pen by @robinselmer
+// includes a script from https://github.com/FoxInFlame/MinecraftColorCodes
+var url = "https://api.minetools.eu/ping/play.miragefactions.com";
+$(document).ready(function(){
+$.getJSON(url, function (r) {
+  //data is the JSON string
+  if (r.error) {
+    $("#rest").html("Server Offline");
+    return false;
+  }
+  var pl = "";
+  var motd = r.description.replaceColorCodes();
+  for (i = 0; 5 > i; i++) {
+    pl = pl + "<br>" + r.players.sample[i].name;
+  }
+  $("#rest").html(
+    
+      motd +
+      "<br><b>Players Online:</b> " +
+      r.players.online +
+      pl
+  );
+  $("#favicon").attr("src", r.favicon);
+});
+});
+
+</script>
 <style>
    body,html{
   background-size:cover;
@@ -92,33 +119,7 @@ h1,h2{
   color:#4a3854
 }
 </style>
-<script>
-  //based on a pen by @robinselmer
-// includes a script from https://github.com/FoxInFlame/MinecraftColorCodes
-var url = "https://api.minetools.eu/ping/play.miragefactions.com";
-$(document).ready(function(){
-$.getJSON(url, function (r) {
-  //data is the JSON string
-  if (r.error) {
-    $("#rest").html("Server Offline");
-    return false;
-  }
-  var pl = "";
-  var motd = r.description.replaceColorCodes();
-  for (i = 0; 5 > i; i++) {
-    pl = pl + "<br>" + r.players.sample[i].name;
-  }
-  $("#rest").html(
-    
-      motd +
-      "<br><b>Players Online:</b> " +
-      r.players.online +
-      pl
-  );
-  $("#favicon").attr("src", r.favicon);
-});
-});
-</script>
+
 <div class="card"> <div class="icon"><img src="https://pbs.twimg.com/profile_images/808180587605331969/u-CULTwl_400x400.jpg" id="favicon"></div><div class="header">
   <div class="image"> <img src="https://lh4.googleusercontent.com/ytEVMzFEGf8DQjzElXn2PE9CCpmfAGVFsM0tokQw6E_MqhJQQIFwu_DoNxc14M4QlG5WT3TivgGjj5zUAdPGH4A=w16383" alt="" /> </div>
   
