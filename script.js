@@ -9,16 +9,12 @@ $.getJSON(url, function (r) {
     return false;
   }
   var pl = "";
-  console.log(r.description);
-  console.log(typeof r.description);
-  console.log(r.description.replaceColorCodes());
-  console.log(typeof r.description.replaceColorCodes());
   var motd = r.description.replaceColorCodes();
   for (i = 0; 5 > i; i++) {
     pl = pl + "<br>" + r.players.sample[i].name;
   }
   $("#rest").html(
-      motd +
+      motd.textContent +
       "<br><b>Players Online:</b> " +
       r.players.online +
       pl
