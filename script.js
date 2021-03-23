@@ -10,9 +10,9 @@ $.getJSON(url, function (rest) {
   }
   var pl = "";
   var motd = rest.description.replace(/\u00a7(.+?)/gi, "");
-  for (i = 0; 5 > i; i++) {
+  for (i = 0; rest.players.sample.length > i; i++) {
     if(i >= rest.players.sample.length) break;
-    pl = pl + "<br>" + rest.players.sample[i].name;
+    pl = pl + "<p class='head' style='object-fit: none;margin:0;'><img class='head' src='https://crafatar.com/avatars/"+ rest.players.sample[i].id + "?size=24'></img> "+rest.players.sample[i].name+"</p>";
   }
   $("#rest").html(
     motd +
