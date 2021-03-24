@@ -1,1 +1,1 @@
-# mirageping.github.io
+# mirageping-widget
